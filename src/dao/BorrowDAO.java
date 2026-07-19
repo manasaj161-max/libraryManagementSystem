@@ -29,7 +29,6 @@ public class BorrowDAO {
 
             int rows = ps.executeUpdate();
 
-
             if(rows > 0) {
                 System.out.println("Book issued successfully!");
             }
@@ -70,6 +69,38 @@ public class BorrowDAO {
 
             }
 
+
+        } catch(Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }
+
+
+
+    // Return Book
+    public void returnBook(int borrowId, String returnDate) {
+
+        try {
+
+            Connection con = DBConnection.getConnection();
+
+            String sql = "UPDATE borrow_records SET return_date=? WHERE borrow_id=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, returnDate);
+            ps.setInt(2, borrowId);
+
+            int rows = ps.executeUpdate();
+
+            if(rows > 0) {
+                System.out.println("Book returned successfully!");
+            }
+            else {
+                System.out.println("Borrow record not found!");
+            }
 
         } catch(Exception e) {
 
