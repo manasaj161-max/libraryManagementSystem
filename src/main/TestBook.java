@@ -12,10 +12,10 @@ public class TestBook {
 
         Bookdao dao = new Bookdao();
 
-        System.out.print("Enter Book ID to Search: ");
+        System.out.print("Enter Book ID to Delete: ");
         int id = sc.nextInt();
 
-        dao.searchBook(id);
+        dao.deleteBook(id);
 
         sc.close();
     }
