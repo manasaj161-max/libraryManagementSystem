@@ -8,8 +8,8 @@ public class TestReturn {
 
         BorrowDAO dao = new BorrowDAO();
 
-        // Returning book with borrow_id = 3
-        dao.returnBook(3, "2026-07-19");
+        // Returning book with borrow_id = 3 bookid =2
+        dao.returnBook(3, 2,"2026-07-19");
 
         System.out.println("\n===== Updated Borrow Records =====");
 
