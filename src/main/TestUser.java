@@ -1,26 +1,26 @@
 package main;
 
+import java.util.Scanner;
+
 import dao.UserDAO;
-import model.User;
 
 public class TestUser {
 
     public static void main(String[] args) {
 
-        User user = new User(
-                1,
-                "Manasa",
-                "manasaj161@gmail.com",
-                "12345",
-                "9876543210"
-        );
+        Scanner sc = new Scanner(System.in);
 
         UserDAO dao = new UserDAO();
 
-        dao.addUser(user);
+        System.out.print("Enter User ID to Delete: ");
+        int id = sc.nextInt();
 
-        System.out.println("\n===== All Users =====");
+        dao.deleteUser(id);
+
+        System.out.println("\n===== Remaining Users =====");
 
         dao.viewUsers();
+
+        sc.close();
     }
 }

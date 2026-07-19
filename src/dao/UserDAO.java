@@ -63,4 +63,93 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
+
+
+    // Search User
+    public void searchUser(int userId) {
+
+        try {
+            Connection con = DBConnection.getConnection();
+
+            String sql = "SELECT * FROM users WHERE user_id=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, userId);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                System.out.println("User Found!");
+
+                System.out.println("User ID  : " + rs.getInt("user_id"));
+                System.out.println("Name     : " + rs.getString("name"));
+                System.out.println("Email    : " + rs.getString("email"));
+                System.out.println("Phone    : " + rs.getString("phone"));
+
+            } else {
+                System.out.println("User not found!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // Update User
+    public void updateUser(User user) {
+
+        try {
+            Connection con = DBConnection.getConnection();
+
+            String sql = "UPDATE users SET name=?, email=?, password=?, phone=? WHERE user_id=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
+            ps.setString(4, user.getPhone());
+            ps.setInt(5, user.getUserId());
+
+            int rows = ps.executeUpdate();
+
+            if (rows > 0) {
+                System.out.println("User updated successfully!");
+            } else {
+                System.out.println("User not found!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // Delete User
+    public void deleteUser(int userId) {
+
+        try {
+            Connection con = DBConnection.getConnection();
+
+            String sql = "DELETE FROM users WHERE user_id=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, userId);
+
+            int rows = ps.executeUpdate();
+
+            if (rows > 0) {
+                System.out.println("User deleted successfully!");
+            } else {
+                System.out.println("User not found!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
