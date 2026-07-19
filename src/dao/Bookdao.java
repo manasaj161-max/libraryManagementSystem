@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import model.Book;
 import util.DBConnection;
 
@@ -10,7 +11,6 @@ public class Bookdao {
 
     // Add Book
     public void addBook(Book book) {
-
         try {
             Connection con = DBConnection.getConnection();
 
@@ -38,7 +38,6 @@ public class Bookdao {
 
     // View All Books
     public void viewBooks() {
-
         try {
             Connection con = DBConnection.getConnection();
 
@@ -49,13 +48,40 @@ public class Bookdao {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 System.out.println("Book ID   : " + rs.getInt("book_id"));
                 System.out.println("Title     : " + rs.getString("title"));
                 System.out.println("Author    : " + rs.getString("author"));
                 System.out.println("Category  : " + rs.getString("category"));
                 System.out.println("Quantity  : " + rs.getInt("quantity"));
                 System.out.println("----------------------------");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Search Book by ID
+    public void searchBook(int bookId) {
+        try {
+            Connection con = DBConnection.getConnection();
+
+            String sql = "SELECT * FROM books WHERE book_id = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, bookId);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("Book Found!");
+                System.out.println("Book ID   : " + rs.getInt("book_id"));
+                System.out.println("Title     : " + rs.getString("title"));
+                System.out.println("Author    : " + rs.getString("author"));
+                System.out.println("Category  : " + rs.getString("category"));
+                System.out.println("Quantity  : " + rs.getInt("quantity"));
+            } else {
+                System.out.println("Book not found!");
             }
 
         } catch (Exception e) {
