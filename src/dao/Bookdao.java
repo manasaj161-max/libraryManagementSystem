@@ -1,9 +1,8 @@
 package dao;
-
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import model.Book;
 import util.DBConnection;
 
@@ -87,6 +86,39 @@ public class Bookdao{
             e.printStackTrace();
         }
     }
+    public Book getBookById(int bookId) {
+
+    try {
+
+        Connection con = DBConnection.getConnection();
+
+        String sql = "SELECT * FROM books WHERE book_id = ?";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setInt(1, bookId);
+
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+
+            Book book = new Book();
+
+            book.setBookId(rs.getInt("book_id"));
+            book.setTitle(rs.getString("title"));
+            book.setAuthor(rs.getString("author"));
+            book.setCategory(rs.getString("category"));
+            book.setQuantity(rs.getInt("quantity"));
+
+            return book;
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return null;
+}
 
     // Update Book
     public void updateBook(Book book) {
@@ -138,5 +170,26 @@ public class Bookdao{
             e.printStackTrace();
         }
     }
+    public ResultSet getAllBooks() {
+
+    try {
+
+        Connection con = DBConnection.getConnection();
+
+        String sql = "SELECT * FROM books";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        return ps.executeQuery();
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+
+    }
+
+    return null;
 }
+}
+
         

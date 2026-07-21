@@ -1,18 +1,115 @@
-## Getting Started
+# 📚 Library Management System
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A desktop-based Library Management System developed using **Java, Swing, JDBC, and MySQL**. This application helps manage books, users, and borrowing records through a user-friendly graphical interface.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## 🚀 Features
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+### 📚 Book Management
+- Add Book
+- View Books
+- Search Book
+- Update Book
+- Delete Book
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+### 👤 User Management
+- Add User
+- View Users
+- Search User
+- Update User
+- Delete User
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+### 📖 Borrow Management
+- Issue Book
+- Return Book
+- View Borrow Records
 
-## Dependency Management
+---
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## 🛠 Technologies Used
+
+- Java
+- Java Swing
+- JDBC
+- MySQL
+- Object-Oriented Programming (OOP)
+
+---
+
+## 💻 Tools Used
+
+- Visual Studio Code
+- MySQL Workbench
+- Git
+- GitHub
+
+---
+
+## 📂 Project Structure
+
+```
+LibraryManagementSystem
+│
+├── src
+│   ├── dao
+│   ├── gui
+│   ├── model
+│   ├── util
+│   └── main
+│
+├── lib
+│
+├── database.sql
+│
+├── README.md
+│
+└── .gitignore
+```
+
+---
+
+## 🗄 Database
+
+Database Name:
+
+```
+library_db
+```
+
+Tables:
+
+- books
+- users
+- borrow_records
+
+---
+
+## ▶️ How to Run
+
+1. Install Java JDK.
+2. Install MySQL Server.
+3. Import `database.sql`.
+4. Add MySQL JDBC Connector.
+5. Run `Dashboard.java`.
+
+---
+
+## 👩‍💻 Developed By
+
+**Manasa J**
+
+BCA Graduate
+
+Java | JDBC | MySQL | Swing
+
+---
+
+## 🔮 Future Enhancements
+
+- Login Authentication
+- Fine Calculation
+- Book Reservation
+- Email Notifications
+- Dashboard Statistics
+- Report Generation
